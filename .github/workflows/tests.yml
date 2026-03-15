@@ -24,8 +24,9 @@ jobs:
 
       - name: Install dependencies
         run: |
-          uv sync --dev
+          uv venv
           uv pip install git+https://github.com/hyiger/gcode-lib.git
+          uv pip install -e ".[dev]"
 
       - name: Run unit tests
         run: uv run pytest -m "not integration" --cov=gcode_viewer --cov-report=term-missing -v
