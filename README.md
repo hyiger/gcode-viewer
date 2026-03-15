@@ -1,6 +1,6 @@
 # gcode-viewer
 
-3D G-code toolpath viewer with interactive GUI and CLI PNG export. Supports `.gcode` and `.bgcode` files via [gcode-lib](https://github.com/rlewis/gcode-lib).
+3D G-code toolpath viewer with interactive GUI and CLI PNG export. Supports `.gcode` and `.bgcode` files via [gcode-lib](https://github.com/hyiger/gcode-lib).
 
 ![3DBenchy toolpath visualization](docs/benchy_preview.png)
 
@@ -21,7 +21,7 @@ Requires Python >= 3.10 and [uv](https://docs.astral.sh/uv/).
 uv sync
 ```
 
-> **Note:** [gcode-lib](https://github.com/rlewis/gcode-lib) >= 1.1.0 is required. Install it editable if developing locally:
+> **Note:** [gcode-lib](https://github.com/hyiger/gcode-lib) >= 1.1.0 is required. Install it editable if developing locally:
 > ```bash
 > uv pip install -e /path/to/gcode-lib
 > ```
@@ -134,7 +134,7 @@ tests/
 
 ## Dependencies
 
-- [gcode-lib](https://github.com/rlewis/gcode-lib) — G-code parsing, arc linearization, volume detection
+- [gcode-lib](https://github.com/hyiger/gcode-lib) — G-code parsing, arc linearization, volume detection
 - [PyVista](https://pyvista.org/) — 3D mesh visualization and off-screen rendering
 - [NumPy](https://numpy.org/) — array operations
 - [PyQt6](https://www.riverbankcomputing.com/software/pyqt/) — GUI framework
