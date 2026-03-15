@@ -1,0 +1,29 @@
+[build-system]
+requires = ["hatchling"]
+build-backend = "hatchling.build"
+
+[project]
+name = "gcode-viewer"
+version = "0.1.0"
+description = "3D G-code toolpath viewer with interactive GUI and CLI export"
+requires-python = ">=3.10"
+dependencies = [
+    "gcode-lib>=1.1.0",
+    "pyvista>=0.43",
+    "pyvistaqt>=0.11",
+    "numpy>=1.24",
+    "PyQt6>=6.5",
+]
+
+[project.optional-dependencies]
+dev = ["pytest", "pytest-cov"]
+
+[project.scripts]
+gcode-viewer = "gcode_viewer.cli:main"
+
+[tool.hatch.build.targets.wheel]
+packages = ["src/gcode_viewer"]
+
+[tool.pytest.ini_options]
+testpaths = ["tests"]
+markers = ["integration: requires real gcode files"]
