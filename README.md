@@ -2,6 +2,8 @@
 
 3D G-code toolpath viewer with interactive GUI and CLI PNG export. Supports `.gcode` and `.bgcode` files via [gcode-lib](https://github.com/rlewis/gcode-lib).
 
+![3DBenchy toolpath visualization](docs/benchy_preview.png)
+
 ## Features
 
 - Interactive 3D visualization with layer-by-layer slider
