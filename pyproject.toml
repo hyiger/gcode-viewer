@@ -7,6 +7,20 @@ name = "gcode-viewer"
 version = "0.1.0"
 description = "3D G-code toolpath viewer with interactive GUI and CLI export"
 requires-python = ">=3.10"
+license = "MIT"
+readme = "README.md"
+authors = [{ name = "hyiger" }]
+classifiers = [
+    "Development Status :: 3 - Alpha",
+    "Intended Audience :: Manufacturing",
+    "License :: OSI Approved :: MIT License",
+    "Programming Language :: Python :: 3",
+    "Programming Language :: Python :: 3.10",
+    "Programming Language :: Python :: 3.11",
+    "Programming Language :: Python :: 3.12",
+    "Programming Language :: Python :: 3.13",
+    "Topic :: Scientific/Engineering :: Visualization",
+]
 dependencies = [
     "gcode-lib>=1.1.0",
     "pyvista>=0.43",
@@ -14,6 +28,11 @@ dependencies = [
     "numpy>=1.24",
     "PyQt6>=6.5",
 ]
+
+[project.urls]
+Homepage = "https://github.com/hyiger/gcode-viewer"
+Repository = "https://github.com/hyiger/gcode-viewer"
+Issues = "https://github.com/hyiger/gcode-viewer/issues"
 
 [project.optional-dependencies]
 dev = ["pytest", "pytest-cov"]
