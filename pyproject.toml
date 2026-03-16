@@ -4,7 +4,7 @@ build-backend = "hatchling.build"
 
 [project]
 name = "gcode-viewer"
-version = "0.1.0"
+version = "0.2.0"
 description = "3D G-code toolpath viewer with interactive GUI and CLI export"
 requires-python = ">=3.10"
 license = "MIT"
