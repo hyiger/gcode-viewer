@@ -197,6 +197,11 @@ def test_build_scene_empty_layer_skipped(offscreen_plotter):
     assert 0 not in actors  # empty layer skipped
 
 
+def test_build_scene_custom_line_width(sample_toolpath, offscreen_plotter):
+    actors, _ = build_scene(offscreen_plotter, sample_toolpath, line_width=4.0)
+    assert len(actors) > 0
+
+
 @pytest.mark.parametrize("mode", list(ColorMode))
 def test_build_scene_all_color_modes(mode, sample_toolpath, offscreen_plotter):
     actors, _ = build_scene(offscreen_plotter, sample_toolpath, color_mode=mode)

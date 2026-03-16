@@ -35,6 +35,7 @@ def test_build_parser_defaults():
     assert args.show_travel is False
     assert args.no_bed is False
     assert args.color_mode == "feature"
+    assert args.scale == 1.0
 
 
 def test_build_parser_all_options():
@@ -50,6 +51,7 @@ def test_build_parser_all_options():
         "--show-travel",
         "--no-bed",
         "--color-mode", "height",
+        "--scale", "0.5",
     ])
     assert args.export == "out.png"
     assert args.camera == "front"
@@ -60,6 +62,7 @@ def test_build_parser_all_options():
     assert args.show_travel is True
     assert args.no_bed is True
     assert args.color_mode == "height"
+    assert args.scale == 0.5
 
 
 @pytest.mark.parametrize("cam", ["top", "front", "side", "isometric"])
@@ -74,6 +77,12 @@ def test_build_parser_color_mode_choices(mode):
     parser = build_parser()
     args = parser.parse_args(["test.gcode", "--color-mode", mode])
     assert args.color_mode == mode
+
+
+def test_build_parser_scale_short_flag():
+    parser = build_parser()
+    args = parser.parse_args(["test.gcode", "-s", "0.25"])
+    assert args.scale == 0.25
 
 
 def test_build_parser_invalid_camera():
@@ -92,7 +101,7 @@ def _make_args(**kwargs):
         camera_azimuth=None, camera_elevation=None,
         layer=None, resolution="800x600",
         show_travel=False, no_bed=False,
-        color_mode="feature",
+        color_mode="feature", scale=1.0,
     )
     defaults.update(kwargs)
     args = MagicMock()
@@ -132,6 +141,13 @@ def test_export_png_no_bed(sample_toolpath, tmp_path):
 def test_export_png_show_travel(sample_toolpath, tmp_path):
     out = str(tmp_path / "out.png")
     args = _make_args(export=out, show_travel=True)
+    export_png(sample_toolpath, args)
+    assert (tmp_path / "out.png").exists()
+
+
+def test_export_png_with_scale(sample_toolpath, tmp_path):
+    out = str(tmp_path / "out.png")
+    args = _make_args(export=out, scale=0.5)
     export_png(sample_toolpath, args)
     assert (tmp_path / "out.png").exists()
 

@@ -57,6 +57,10 @@ def build_parser() -> argparse.ArgumentParser:
         choices=["feature", "height", "speed", "fan", "temperature", "flow"],
         help="Color mode for visualization (default: feature)",
     )
+    parser.add_argument(
+        "--scale", "-s", type=float, default=1.0,
+        help="Scale factor for output image dimensions (default: 1.0)",
+    )
 
     return parser
 
@@ -80,6 +84,8 @@ def export_png(toolpath, args) -> None:
     color_mode = color_mode_map[args.color_mode]
 
     w, h = map(int, args.resolution.split("x"))
+    w = int(w * args.scale)
+    h = int(h * args.scale)
     plotter = pv.Plotter(off_screen=True, window_size=[w, h])
 
     max_layer = args.layer if args.layer is not None else toolpath.total_layers - 1
